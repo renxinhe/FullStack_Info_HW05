@@ -8,17 +8,24 @@ app.secret_key = os.environ.get('SECRET_KEY') or 'hard to guess string'
 @app.route('/index')
 def index():
     username = ''
-    if (): #check if the user is already in session, if so, direct the user to survey.html Hint: render_template with a variable
-        pass
+    if 'username' in session: #check if the user is already in session, if so, direct the user to survey.html Hint: render_template with a variable
+        username = session['username']
+        return render_template('survey.html', name=username)
     else:
         return render_template('login.html')
 
-@app.route('/login') # You need to specify something here for the function to get requests
+@app.route('/login', methods=['GET', 'POST']) # You need to specify something here for the function to get requests
 def login():
     # Here, you need to have logic like if there's a post request method, store the username and email from the form into
     # session dictionary
-    if():
-        pass
+    if request.method == 'POST':
+        print request.form
+        try:
+            session['username'] = request.form['username']
+            session['email'] = request.form['email']
+        except KeyError:
+            return str('Bad form data submitted: %s' % str(request.form))
+        return redirect(url_for('index'))
     return None
 
 @app.route('/logout')

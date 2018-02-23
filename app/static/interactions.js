@@ -22,3 +22,9 @@ $("input[type='range']").on('change', function updateLabel() {
 	var currentValue = $(this).val();
 	$(this).next().html(currentValue);
 });
+
+$('.slider').slider({
+	formatter: function(value) {
+		return 'Current value: ' + value;
+	}
+});

@@ -141,7 +141,11 @@ input[type=range]::-webkit-slider-runnable-track {
 #site-title-wrapper {
 	display: inline-block;
 	height: 5rem;
-	width: 15%;
+	width: 40%;
+}
+
+#site-title-wrapper > div {
+    display: inline-block;
 }
 
 #site-icon-wrapper {
@@ -246,4 +250,8 @@ input[type=range]::-webkit-slider-runnable-track {
 	background-color: #fff;
 	padding: 8px 12px;
 	line-height: 1.4;
+}
+
+.slider .slider-selection {
+	background: #BABABA;
 }
